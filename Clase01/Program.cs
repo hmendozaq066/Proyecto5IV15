@@ -18,9 +18,20 @@ namespace Clase01
              */
 
             var persona = new Clases.Persona(); //Una instancia de un objeto F1
+
+            Console.Write("Escribe tu Apellido paterno: ");
+            persona.ApellidoPaterno = Console.ReadLine();
+
+            Console.WriteLine(persona.GenerarCURP());
+
+            /*Console.Write("Escribe tu fecha de nacimiento: ");
+            persona.FechaNacimiento = DateTime.Parse(Console.ReadLine());
+
+            Console.WriteLine("Tu edad es: " + persona.CalcularEdad());*/
+
             //Clases.Persona persona = new Clases.Persona(); // F2 de hacer una instancia
             //Para asignar un valor a una propiedad este debe estar a la izquierda del =
-            Console.Write("Escribe tu nombre: ");
+            /*Console.Write("Escribe tu nombre: ");
             persona.Nombre = Console.ReadLine();
 
             Console.Write("Escribe tu estatura: ");
@@ -56,7 +67,7 @@ namespace Clase01
             Console.WriteLine("Tu fecha de nacimiento es: " + persona.FechaNacimiento);
             Console.WriteLine("Tienes enfermedades: " + persona.TieneEfermedades);
 
-            //detener la ejecución
+            //detener la ejecución*/
 
             Console.ReadKey();
         }
