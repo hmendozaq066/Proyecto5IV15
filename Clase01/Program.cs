@@ -56,6 +56,8 @@ namespace Clase01
             Console.WriteLine("Tu fecha de nacimiento es: " + persona.FechaNacimiento);
             Console.WriteLine("Tienes enfermedades: " + persona.TieneEfermedades);
 
+            //detener la ejecución
+
             Console.ReadKey();
         }
     }
