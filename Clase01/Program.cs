@@ -22,6 +22,21 @@ namespace Clase01
             Console.Write("Escribe tu Apellido paterno: ");
             persona.ApellidoPaterno = Console.ReadLine();
 
+            Console.Write("Escribe tu Apellido materno: ");
+            persona.ApellidoMaterno = Console.ReadLine();
+
+            Console.Write("Escribe tu nombre: ");
+            persona.Nombre = Console.ReadLine();
+
+            Console.Write("Escribe tu fecha de nacimiento: ");
+            persona.FechaNacimiento = DateTime.Parse(Console.ReadLine());
+
+            Console.Write("Género [Hombre/Mujer]: ");
+            persona.Genero = Console.ReadLine();
+
+            Console.Write("Estado de nacimiento: ");
+            persona.LugarNacimiento = Console.ReadLine();
+
             Console.WriteLine(persona.GenerarCURP());
 
             /*Console.Write("Escribe tu fecha de nacimiento: ");
