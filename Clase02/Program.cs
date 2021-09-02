@@ -26,6 +26,9 @@ namespace Clase02
             var resultado = complejo.Suma(complejo2);
             Console.WriteLine("La forma binomica es " + resultado.FormaBinomica());
 
+            var resultado02 = complejo.Suma(20, 15);
+            Console.WriteLine("La forma binomica es " + resultado02.FormaBinomica());
+
             Console.ReadKey();
         }
     }

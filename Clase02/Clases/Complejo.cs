@@ -58,14 +58,59 @@ namespace Clase02.Clases
          * 
          */
 
+        /// <summary>
+        /// Suma un número complejo que se envía
+        /// </summary>
+        /// <param name="complejo">Número complejo a sumar</param>
+        /// <returns>Una instancia de la clase Complejo con el resultado de la suma</returns>
         public Complejo Suma(Complejo complejo)
         {
+            //En la siguiente linea estamos haciendo instancia de la clase Complejo
+            //que se llamará resultado
             var resultado = new Complejo();
+            //Para acceder a cada atributo de la objeto Complejo se debe usar un punto
             resultado.A = A + complejo.A;
             resultado.B = B + complejo.B;
+            //Aquí retornamos un objeto Complejo que se llama resultado 
             return resultado;
         }
 
+        public Complejo Suma(int ParteReal, int ParteImaginaria)
+        {
+            var resultado = new Complejo();
+            resultado.A = A - ParteReal;
+            resultado.B = B - ParteImaginaria;
+            return resultado;
+        }
+
+        //Implementar el metódo que diga si dos números complejos son iguales
+        //public bool SonIguales(Complejo comparar)
+        // A = A 
+        // B = B
+
+        //z = 4 + 5i
+        //y = 4 + 5i
+
+        //w = 4 + 5i
+        //x = 5 + 4i
+
+        /// <summary>
+        /// Resta un número complejo que se envía
+        /// </summary>
+        /// <param name="complejo">Número complejo a restar</param>
+        /// <returns>Una instancia de la clase Complejo con el resultado de la resta</returns>
+        public Complejo Resta(Complejo complejo)
+        {
+            var resultado = new Complejo();
+            resultado.A = A - complejo.A;
+            resultado.B = B - complejo.B;
+            return resultado;
+        }
+
+        /// <summary>
+        /// Devuelve una cadena con la representación del número complejo
+        /// </summary>
+        /// <returns>String con la forma binómica de un número complejo</returns>
         public string FormaBinomica()
         {
             return string.Format("{0} + {1}i", A, B);
