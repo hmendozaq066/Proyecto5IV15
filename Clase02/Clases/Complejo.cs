@@ -83,6 +83,22 @@ namespace Clase02.Clases
             return resultado;
         }
 
+        public bool SonIguales(Complejo comparar)
+        {
+            if (A == comparar.A && B == comparar.B) return true;
+            return false;
+        }
+
+        public bool SonIguales(int A, int B)
+        {
+            //Operador ternario
+            return (this.A == A && this.B == B) ? true : false;
+            //Se puede simplificar aun más dejandolo de la siguiente forma
+            //return (this.A == A && this.B == B);
+            //Sintaxis
+            // (condición) ? valor en caso verdadero : valor en caso de falso;
+        }
+
         //Implementar el metódo que diga si dos números complejos son iguales
         //public bool SonIguales(Complejo comparar)
         // A = A 
