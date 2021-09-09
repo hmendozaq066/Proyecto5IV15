@@ -27,11 +27,11 @@ Agenda
 	Marcar
 
 Contacto
-    ID
+    ID                                  
 	Nombre
 	Apellido paterno
 	Apellido materno
-	Número de celular |13 ó 10| solo enteros | 5556465066 -- 55 5646 5066 --  +(52) 55-5646-5066
+	Número de celular |13 ó 10| solo enteros | 5556465066 -- 55 5646 5066 --  +(52) 55-5646-5066 | int o string
 	Número fijo
 	Extensión
 	Correo electronico | unico | gmail | outlook
