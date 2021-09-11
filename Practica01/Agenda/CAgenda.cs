@@ -69,5 +69,61 @@ namespace Practica01.Agenda
             return false;
         }
 
+        public List<Contacto> BuscarTodosLosContactosPorNombre(string criterio, bool parcial = true)
+        {
+            var listaContactos = new List<Contacto>();
+            foreach (Contacto contacto in Contactos)
+            {
+                if (parcial == true)
+                {
+                    if (contacto.Nombre.ToUpper().Trim().Contains(criterio.ToUpper().Trim()) == true)
+                    {
+                        listaContactos.Add(contacto);
+                    }
+                }
+                else
+                {
+                    if (contacto.Nombre.ToUpper().Trim() == criterio.ToUpper().Trim())
+                    {
+                        listaContactos.Add(contacto);
+                    }
+                }
+            }
+            return listaContactos;
+        }
+
+        public Contacto BuscarPorNombre(string criterio, bool parcial = true)
+        {
+            //HECTOR MANUEL --> HECTOR  --> TRUE
+            //HECTOR MANUEL --> MANUEL --> TRUE
+            //HECTOR MANUEL --> HECTOR MANUEL --> FALSE
+            //Hector Mendoza --> HECTOR
+            //Recorremos la Lista Contactos y lo almacenamos en contacto
+            //Julio --> juli 
+            foreach(Contacto contacto in Contactos)
+            {
+                //Si parcial es verdadero
+                if(parcial == true)
+                {
+                    //Busca en el nombre que contenga el criterio
+                    //Se convierte en mayusculas y se eliminan espacios para una mejor busqueda
+                    if(contacto.Nombre.ToUpper().Trim().Contains(criterio.ToUpper().Trim()) == true)
+                    {
+                        return contacto;
+                    }
+                }
+                else
+                {
+                    //Se compara si nombre es igual a criterio
+                    if(contacto.Nombre.ToUpper().Trim() == criterio.ToUpper().Trim())
+                    {
+                        return contacto;
+                    }
+                }
+            }
+            //Si no localiza devuelve null
+            return null;
+        }
+
     }
 }

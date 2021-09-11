@@ -13,6 +13,35 @@ namespace Practica01
     {
         static void Main(string[] args)
         {
+
+            var agenda = new CAgenda();
+            agenda.AgregarContacto("Julio", "Coronado", "Sandoval", "jcoronado@correo.com", "5556565656", "", "");
+            agenda.AgregarContacto("Adriel", "Herrera", "Dominguez", "aherrera@correo.com", "5557575757", "", "");
+            agenda.AgregarContacto("Adriel", "Lopez", "Dominguez", "aherrera@correo.com", "5557575757", "", "");
+            agenda.AgregarContacto("Angel Adriel", "Domingez", "Herrera", "adominguez@correo.com", "5555555555", "", "");
+            agenda.AgregarContacto("Osiel", "Lopez", "Acevedo", "olopez@correo.com", "5558585858", "", "");
+            agenda.AgregarContacto("Jessica Loana", "Ibarra", "Montaño", "jibarra@correo.com", "5559595959", "", "");
+
+            Console.WriteLine("Buscar por nombre: ");
+            string criterio = Console.ReadLine();
+            var busqueda = agenda.BuscarPorNombre(criterio);
+
+            if(busqueda == null)
+            {
+                Console.WriteLine("Contacto no localizado");
+            }
+            else
+            {
+                Console.WriteLine("Nombre del contacto: " + busqueda.NombreCompleto());
+            }
+            Console.WriteLine("============================================");
+            var resultadosBusqueda = agenda.BuscarTodosLosContactosPorNombre(criterio);
+            foreach(Contacto con in resultadosBusqueda)
+            {
+                Console.WriteLine("Nombre del contacto: " + con.NombreCompleto());
+            }
+
+            /*
             var agenda = new CAgenda();
             bool agregar = true;
             do
@@ -36,10 +65,10 @@ namespace Practica01
                 string Extension = Console.ReadLine().Trim();
 
                 Console.WriteLine("Escribe el correo electrónico del contacto: ");
-                string CorreoElectronico = Console.ReadLine().Trim();
+                string CorreoElectronico = Console.ReadLine().Trim();*/
 
                 /* Estamos usando el método Agregar contacto */
-                if (agenda.AgregarContacto(Nombre, ApellidoPaterno, ApellidoMaterno, CorreoElectronico, NumeroCelular, NumeroFijo, Extension, "Familia"))
+                /*if (agenda.AgregarContacto(Nombre, ApellidoPaterno, ApellidoMaterno, CorreoElectronico, NumeroCelular, NumeroFijo, Extension, "Familia"))
                 {
                     Console.WriteLine("Contacto agregado correctamente");
                 }
@@ -57,7 +86,7 @@ namespace Practica01
             } while (agregar == true);
 
             
-
+            */
 
             /*var contacto = new Contacto();
 

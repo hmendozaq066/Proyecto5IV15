@@ -103,5 +103,10 @@ namespace Practica01.Agenda
             }
         }
 
+        public string NombreCompleto()
+        {
+            return Nombre + " " + ApellidoPaterno + " " + ApellidoMaterno;
+        }
+
     }
 }
