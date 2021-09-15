@@ -13,120 +13,135 @@ namespace Practica01
     {
         static void Main(string[] args)
         {
-
-            var agenda = new CAgenda();
-            agenda.AgregarContacto("Julio", "Coronado", "Sandoval", "jcoronado@correo.com", "5556565656", "", "");
-            agenda.AgregarContacto("Adriel", "Herrera", "Dominguez", "aherrera@correo.com", "5557575757", "", "");
-            agenda.AgregarContacto("Adriel", "Lopez", "Dominguez", "aherrera@correo.com", "5557575757", "", "");
-            agenda.AgregarContacto("Angel Adriel", "Domingez", "Herrera", "adominguez@correo.com", "5555555555", "", "");
-            agenda.AgregarContacto("Osiel", "Lopez", "Acevedo", "olopez@correo.com", "5558585858", "", "");
-            agenda.AgregarContacto("Jessica Loana", "Ibarra", "Montaño", "jibarra@correo.com", "5559595959", "", "");
-
-            Console.WriteLine("Buscar por nombre: ");
-            string criterio = Console.ReadLine();
-            var busqueda = agenda.BuscarPorNombre(criterio);
-
-            if(busqueda == null)
-            {
-                Console.WriteLine("Contacto no localizado");
-            }
-            else
-            {
-                Console.WriteLine("Nombre del contacto: " + busqueda.NombreCompleto());
-            }
-            Console.WriteLine("============================================");
-            var resultadosBusqueda = agenda.BuscarTodosLosContactosPorNombre(criterio);
-            foreach(Contacto con in resultadosBusqueda)
-            {
-                Console.WriteLine("Nombre del contacto: " + con.NombreCompleto());
-            }
-
-            /*
-            var agenda = new CAgenda();
-            bool agregar = true;
+            Manejador manejador = new Manejador();
+            int opcion;
             do
             {
-                Console.WriteLine("Escribe el nombre del contacto: ");
-                string Nombre = Console.ReadLine().Trim();
-
-                Console.WriteLine("Escribe el apellido paterno del contacto: ");
-                string ApellidoPaterno = Console.ReadLine().Trim();
-
-                Console.WriteLine("Escribe el apellido materno del contacto: ");
-                string ApellidoMaterno = Console.ReadLine().Trim();
-
-                Console.WriteLine("Escribe el número celular del contacto: ");
-                string NumeroCelular = Console.ReadLine().Trim();
-
-                Console.WriteLine("Escribe el número fijo del contacto: ");
-                string NumeroFijo = Console.ReadLine().Trim();
-
-                Console.WriteLine("Escribe el extensión celular del contacto: ");
-                string Extension = Console.ReadLine().Trim();
-
-                Console.WriteLine("Escribe el correo electrónico del contacto: ");
-                string CorreoElectronico = Console.ReadLine().Trim();*/
-
-                /* Estamos usando el método Agregar contacto */
-                /*if (agenda.AgregarContacto(Nombre, ApellidoPaterno, ApellidoMaterno, CorreoElectronico, NumeroCelular, NumeroFijo, Extension, "Familia"))
+                opcion = manejador.MostrarMenu();
+                switch (opcion)
                 {
-                    Console.WriteLine("Contacto agregado correctamente");
+                    case 1:
+                        manejador.MostrarContactos();
+                        break;
+                    case 2:
+                        manejador.AgregarContacto();
+                        break;
+                    case 3:
+                        manejador.EliminarContacto();
+                        break;
+                    default:
+                        break;
                 }
-                else
-                {
-                    var errores = agenda.GetErrores();
-                    foreach (string error in errores) Console.WriteLine(error);
-                }
+                Console.Write("Presiona cualquier tecla para continuar...");
+                Console.ReadKey();
+            } while (opcion != 6);
+        }
 
-                Console.WriteLine("¿Deseas agregar otro usuario [S/N]?: ");
-                string confirmar = Console.ReadLine().Trim();
+    }
 
-                agregar = (confirmar.ToUpper().Trim().Substring(0, 1) == "S") ? true : false;
+    class Manejador
+    {
+        private CAgenda agenda = new CAgenda();
 
-            } while (agregar == true);
-
-            
-            */
-
-            /*var contacto = new Contacto();
-
-            Console.WriteLine("Escribe el número de contacto: ");
-            contacto.ID = Convert.ToInt32(Console.ReadLine().Trim());
-
-            Console.WriteLine("Escribe el nombre del contacto: ");
-            contacto.Nombre = Console.ReadLine().Trim();
-
-            Console.WriteLine("Escribe el apellido paterno del contacto: ");
-            contacto.ApellidoPaterno= Console.ReadLine().Trim();
-
-            Console.WriteLine("Escribe el número celular del contacto: ");
-            contacto.NumeroCelular = Console.ReadLine().Trim();
-
-            Console.WriteLine("Escribe el correo electrónico del contacto: ");
-            contacto.CorreoElectronico = Console.ReadLine().Trim();
-
-            if (contacto.Validar())
+        public int MostrarMenu()
+        {
+            int opcion;
+            do
             {
-                Console.WriteLine("La validación fue correcta");
+                Console.Clear();
+                Console.WriteLine("Agenda v1.0");
+                Console.WriteLine("1.- Mostrar contactos");
+                Console.WriteLine("2.- Agregar contacto");
+                Console.WriteLine("3.- Elimnar contacto");
+                Console.WriteLine("4.- Buscar contacto");
+                Console.WriteLine("5.- Buscar contactos");
+                Console.WriteLine("6.- Salir");
+                Console.Write("Selecciona una opción: ");
+                opcion = Convert.ToInt32(Console.ReadLine());
+            } while (opcion <= 0 || opcion > 6);
+            return opcion;
+        }
+
+        public void EliminarContacto()
+        {
+            Console.Clear();
+            Console.WriteLine("Eliminar contacto.");
+            Console.Write("Indica el ID del contacto a eliminar: ");
+            int ID = Convert.ToInt32(Console.ReadLine());
+            if (agenda.EliminarContacto(ID))
+            {
+                Console.WriteLine("El contacto se elimino correctamente");
             }
             else
             {
-                var errores = contacto.GetErrores();
-                Console.WriteLine("Hay errores en la captura");
-                foreach (string error in errores) Console.WriteLine(error);
-            }*/
-
-            /*
-                //contacto.Errores.Add("Puedo agregar errores sin necesidad de validar");//¿Que pasa?
-                contacto.ID = 1;
-                contacto.Nombre = "Héctor";
-                contacto.ApellidoPaterno = "Mendoza";
-                contacto.NumeroCelular = "5556465066";
-                contacto.CorreoElectronico = "hmendoza@gmail.com";
-                Console.WriteLine("La validación del contacto es: " + contacto.Validar().ToString());
-             */
-
-            Console.ReadKey();
+                Console.WriteLine("No se localizo el contacto");
+            }
         }
+
+        public void AgregarContacto()
+        {
+            Console.Clear();
+            Console.WriteLine("Agregar contacto.");
+            Console.WriteLine("Captura los datos indicados");
+            
+            Console.Write("Nombre: ");
+            string Nombre = Console.ReadLine();
+
+            Console.Write("Apellido paterno: ");
+            string ApellidoPaterno = Console.ReadLine();
+
+            Console.Write("Apellido materno: ");
+            string ApellidoMaterno = Console.ReadLine();
+
+            Console.Write("Número de celular: ");
+            string NumeroCelular = Console.ReadLine();
+
+            Console.Write("Correo electrónico: ");
+            string CorreoElectronico = Console.ReadLine();
+
+            if(agenda.AgregarContacto(Nombre, ApellidoPaterno, ApellidoMaterno, CorreoElectronico, NumeroCelular, "", ""))
+            {
+                Console.WriteLine("Contacto agregado correctamente");
+            }
+            else
+            {
+                Console.WriteLine("El contacto no se pudo agregar por los siguientes errores:");
+                foreach(string error in agenda.GetErrores())
+                {
+                    Console.WriteLine("\t\t" + error);
+                }
+            }
+        }
+
+        public void MostrarContactos()
+        {
+            Console.Clear();
+
+            if(agenda.GetContactos().Count == 0)
+            {
+                Console.WriteLine("Mostrar todos los contactos");
+                Console.WriteLine("---------------------------------------------------------------------------------");
+                Console.WriteLine("No hay contactos para mostrar");
+            }
+            else
+            {
+                Console.WriteLine("Mostrar todos los contactos");
+                Console.WriteLine("---------------------------------------------------------------------------------");
+                foreach (Contacto contacto in agenda.GetContactos())
+                {
+                    Console.WriteLine("ID\t\t\t" + contacto.ID);
+                    Console.WriteLine("Nombre\t\t\t" + contacto.Nombre);
+                    Console.WriteLine("Apellido paterno\t" + contacto.ApellidoPaterno);
+                    Console.WriteLine("Apellido materno\t" + contacto.ApellidoMaterno);
+                    Console.WriteLine("Número celular\t\t" + contacto.NumeroCelular);
+                    Console.WriteLine("Correo electrónico\t" + contacto.CorreoElectronico);
+                    Console.WriteLine("---------------------------------------------------------------------------------");
+                }
+                Console.WriteLine("Se mostraron " + agenda.GetContactos().Count + " contacto(s)");
+            }
+        }
+
+
     }
+
 }

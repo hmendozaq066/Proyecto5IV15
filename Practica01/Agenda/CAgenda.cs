@@ -20,12 +20,38 @@ namespace Practica01.Agenda
             return Errores;
         }
 
+        public List<Contacto> GetContactos()
+        {
+            return Contactos;
+        }
+
         /// <summary>
         /// Constructor predeterminado que inicializa la lista de contactos
         /// </summary>
         public CAgenda()
         {
             Contactos = new List<Contacto>();
+        }
+
+        /// <summary>
+        /// Elimina de la lista el contacto indicado
+        /// </summary>
+        /// <param name="ID">Es ID que buscará para eliminar</param>
+        /// <returns>True en caso de eliminar, de lo contrario False</returns>
+        public bool EliminarContacto(int ID)
+        {
+            //Declarando la variable i e iniciandolo en 0
+            //Se incrementa en la unidad
+            for(int i = 0; i < Contactos.Count; i++)
+            {
+                //Aquí comparamos el indice con el elemento y su ID
+                if(Contactos[i].ID == ID)
+                {
+                    Contactos.RemoveAt(i);
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>
