@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 //El using nos ayuda a no escribir o importar las librerias que necesitamos
 //we use the using keyword to import external resources (namespaces, classes, etc) inside a program
 using Practica01.Agenda;
@@ -14,6 +15,7 @@ namespace Practica01
         static void Main(string[] args)
         {
             Manejador manejador = new Manejador();
+            manejador.CargarArchivo();
             int opcion;
             do
             {
@@ -29,12 +31,16 @@ namespace Practica01
                     case 3:
                         manejador.EliminarContacto();
                         break;
+                    case 6:
+                        manejador.GuardarArchivo();
+                        break;
                     default:
                         break;
                 }
                 Console.Write("Presiona cualquier tecla para continuar...");
                 Console.ReadKey();
             } while (opcion != 6);
+            manejador.GuardarArchivo();
         }
 
     }
@@ -42,6 +48,49 @@ namespace Practica01
     class Manejador
     {
         private CAgenda agenda = new CAgenda();
+        /// <summary>
+        /// La propiedad archivo guardará la ubicación de nuestro archivo de datos
+        /// </summary>
+        private string archivo = @"D:\ejemplos\contactos.txt";
+
+        /// <summary>
+        /// Lee un archivo de texto separado por |, carga las lineas leídas en la lista Contactos
+        /// </summary>
+        /// <returns></returns>
+        public bool CargarArchivo()
+        {
+            //Creamos una instancia del tipo streamreader para leer las lineas del archivo
+            StreamReader lector = new StreamReader(archivo);
+            string linea;
+            //Leemos todas lineas hasta encontrar una linea null
+            while((linea = lector.ReadLine()) != null)
+            {
+                //separamos en un array de string la linea usando como separador al |
+                string[] elementos = linea.Split('|'); //Pipe
+                //Agregamos el contacto a la agenda
+                agenda.AgregarContacto(elementos[1], elementos[2], elementos[3], elementos[7], elementos[4], elementos[5], elementos[6], elementos[8]);
+            }
+            //Cerrarmos el archivo
+            lector.Close();
+            return true;
+        }
+
+        public bool GuardarArchivo()
+        {
+            //System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Contactos.db";
+            //Creamos una instancia del tipo streamwriter con el escribimos el archivo
+            StreamWriter file = new StreamWriter(archivo);
+            //recorremos la lista de contactos
+            foreach (Contacto cto in agenda.GetContactos())
+            {
+                //escribimos una linea con el formato separado por |
+                file.WriteLine(cto.GenerarLinea());
+            }
+            //Cerramos el archivo
+            file.Close();
+            Console.WriteLine("Se guardo el archivo correctamente");
+            return true;
+        }
 
         public int MostrarMenu()
         {
@@ -52,7 +101,7 @@ namespace Practica01
                 Console.WriteLine("Agenda v1.0");
                 Console.WriteLine("1.- Mostrar contactos");
                 Console.WriteLine("2.- Agregar contacto");
-                Console.WriteLine("3.- Elimnar contacto");
+                Console.WriteLine("3.- Eliminar contacto");
                 Console.WriteLine("4.- Buscar contacto");
                 Console.WriteLine("5.- Buscar contactos");
                 Console.WriteLine("6.- Salir");

@@ -22,6 +22,12 @@ namespace Practica01.Agenda
         public int Bloqueado { get; set; } //1.- No 2.- Si
         public int Estado { get; set; } //1.- Activo, 2.- Eliminado
 
+        public string GenerarLinea()
+        {
+            return string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}", ID, Nombre, ApellidoPaterno, ApellidoMaterno,
+                NumeroCelular, NumeroFijo, Extension, CorreoElectronico, Tipo, Bloqueado.ToString(), Estado.ToString());
+        }
+
         /// <summary>
         /// Aquí tenemos una lista donde se almacenarán los errores
         /// </summary>
