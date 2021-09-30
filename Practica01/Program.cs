@@ -9,8 +9,7 @@ using System.IO;
 using Practica01.Agenda;
 
 namespace Practica01
-{
-    class Program
+{    class Program
     {
         static void Main(string[] args)
         {
