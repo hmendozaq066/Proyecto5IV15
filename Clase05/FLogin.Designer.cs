@@ -80,14 +80,14 @@ namespace Clase05
             this.txtContrasena.Location = new System.Drawing.Point(181, 108);
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.PasswordChar = '*';
-            this.txtContrasena.Size = new System.Drawing.Size(188, 27);
+            this.txtContrasena.Size = new System.Drawing.Size(165, 27);
             this.txtContrasena.TabIndex = 4;
             // 
             // btnIniciarSesion
             // 
-            this.btnIniciarSesion.Location = new System.Drawing.Point(181, 154);
+            this.btnIniciarSesion.Location = new System.Drawing.Point(181, 173);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
-            this.btnIniciarSesion.Size = new System.Drawing.Size(188, 51);
+            this.btnIniciarSesion.Size = new System.Drawing.Size(188, 32);
             this.btnIniciarSesion.TabIndex = 5;
             this.btnIniciarSesion.Text = "Iniciar sesión";
             this.btnIniciarSesion.UseVisualStyleBackColor = true;
@@ -122,6 +122,7 @@ namespace Clase05
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FLogin";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
