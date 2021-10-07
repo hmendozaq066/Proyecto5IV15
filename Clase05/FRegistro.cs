@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Clase05.Clase;
 
 namespace Clase05
 {
@@ -44,6 +45,53 @@ namespace Clase05
             //btnCancelar.Location = new Point(0, 0);
             //Random aleatorio = new Random();
             //btnCancelar.Location = new Point(aleatorio.Next(0, 500), aleatorio.Next(0, 500));
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show("Texto a mostrar");
+            //MessageBox.Show("Texto a mostrar", "Titulo");
+            //MessageBox.Show("Texto a mostrar", "Titulo", MessageBoxButtons.YesNo);
+            //MessageBox.Show("Texto a mostrar", "Titulo", MessageBoxButtons.OKCancel);
+            //MessageBox.Show("Texto a mostrar", "Titulo", MessageBoxButtons.YesNoCancel);
+            //MessageBox.Show("Texto a mostrar", "Titulo", MessageBoxButtons.AbortRetryIgnore);
+            //MessageBox.Show("Texto a mostrar", "Titulo", MessageBoxButtons.YesNo,MessageBoxIcon.Error);
+            //MessageBox.Show("Texto a mostrar", "Titulo", MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+            //MessageBox.Show("Texto a mostrar", "Titulo", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            var resultado = MessageBox.Show("¿Deseas cancelar el registro?", "Clase05", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if(resultado == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+            var usuario = new Usuario();
+            if(chkMostrarContrasena.Checked == false && txtContrasena.Text != txtRepetirContrasena.Text)
+            {
+                MessageBox.Show("Las contraseñas no coinciden");
+            }
+            else
+            {
+                usuario.NombreUsuario = txtUsuario.Text;
+                usuario.Contrasena = txtContrasena.Text;
+                usuario.CorreoElectronico = txtCorreoElectronico.Text;
+                usuario.FechaNacimiento = dtFechaNacimiento.Value;
+                usuario.Genero = cbGenero.Text;
+                usuario.Semestre = Convert.ToInt32(nSemestre.Value);
+                usuario.NumeroTelefono = txtNumeroTelefonico.Text;
+                usuario.CURP = txtCurp.Text;
+
+                if(usuario.Validar() == false)
+                {
+                    //string.Join(Environment.NewLine, usuario.GetErrores()) ==> Convierte un lista de string en un string con el separador Environment.NewLine
+                    //Environment.NewLine indica un salto de linea
+                    MessageBox.Show("Ocurrieron los siguiente errores:" + Environment.NewLine + Environment.NewLine + string.Join(Environment.NewLine, usuario.GetErrores()), "Clase05", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
         }
     }
 }
