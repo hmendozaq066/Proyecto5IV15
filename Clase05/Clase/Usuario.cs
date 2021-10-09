@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Clase05.Clase
 {
@@ -26,6 +27,56 @@ namespace Clase05.Clase
             return Errores;
         }*/
         
+        public string GenerarLinea()
+        {
+            return string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}", IDUsuario.ToString(), NombreUsuario, Contrasena,
+                CorreoElectronico, FechaNacimiento.ToString(), Genero, Semestre.ToString(), NumeroTelefono, CURP);
+        }
+
+        public bool Guardar()
+        {
+            //Ruta absoluta, es indicar desde la unidad donde se va a guardar ie D:\poo\5IV15\Proyecto5IV15\Clase05\bin\Debug\datos\usuarios.txt
+            //Ruta relativa, de donde estoy (ejecutable) buscar carpeta o archivo ie .\usuarios.txt ==> TOTALMENTE RECOMENDADO
+            StreamWriter file = new StreamWriter(@".\usuarios.txt", append: true); 
+            file.WriteLine(GenerarLinea());
+            file.Close();
+            return true;
+        }
+
+        public bool ValidarUsuario()
+        {
+            var usuarios = CargarUsuarios();
+            foreach(Usuario persona in usuarios)
+            {
+                if(persona.NombreUsuario == NombreUsuario && persona.Contrasena == Contrasena)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public List<Usuario> CargarUsuarios()
+        {
+            StreamReader lector = new StreamReader(@".\usuarios.txt");
+            var usuarios = new List<Usuario>();
+            string linea;
+            //Leemos todas lineas hasta encontrar una linea null
+            while ((linea = lector.ReadLine()) != null)
+            {
+                //separamos en un array de string la linea usando como separador al |
+                string[] elementos = linea.Split('|'); //Pipe
+                
+                var persona = new Usuario();
+                persona.IDUsuario = Convert.ToInt32(elementos[0]);
+                persona.NombreUsuario = elementos[1];
+                persona.Contrasena = elementos[2];
+                usuarios.Add(persona);
+            }
+            //Cerrarmos el archivo
+            lector.Close();
+            return usuarios;
+        }
 
         public bool Validar()
         {

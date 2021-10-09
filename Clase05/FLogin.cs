@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Clase05.Clase;
 
 namespace Clase05
 {
@@ -19,9 +20,12 @@ namespace Clase05
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("Hola");
-            //txtUsuario.Location = new Point(10, 10);
-            if(txtUsuario.Text == "hmendozaq" && txtContrasena.Text == "123456")
+            var usuario = new Usuario();
+
+            usuario.NombreUsuario = txtUsuario.Text;
+            usuario.Contrasena = txtContrasena.Text;
+            
+            if(usuario.ValidarUsuario() == true)
             {
                 //Muestra un mensaje
                 MessageBox.Show("Bienvenido");
@@ -38,6 +42,9 @@ namespace Clase05
             {
                 MessageBox.Show("Usuario y/o contraseña incorrecto");
             }
+
+            //MessageBox.Show("Hola");
+            //txtUsuario.Location = new Point(10, 10);
         }
 
         private void lkRegistrarme_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

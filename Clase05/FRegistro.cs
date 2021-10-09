@@ -84,7 +84,15 @@ namespace Clase05
                 usuario.NumeroTelefono = txtNumeroTelefonico.Text;
                 usuario.CURP = txtCurp.Text;
 
-                if(usuario.Validar() == false)
+                if(usuario.Validar())
+                {
+                    //Guardar el registro
+                    if (usuario.Guardar())
+                    {
+                        MessageBox.Show("Usuario guardado", "CLASE05");
+                    }
+                }
+                else
                 {
                     //string.Join(Environment.NewLine, usuario.GetErrores()) ==> Convierte un lista de string en un string con el separador Environment.NewLine
                     //Environment.NewLine indica un salto de linea
