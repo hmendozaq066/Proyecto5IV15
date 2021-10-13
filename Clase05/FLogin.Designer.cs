@@ -29,26 +29,17 @@ namespace Clase05
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtContrasena = new System.Windows.Forms.TextBox();
             this.btnIniciarSesion = new System.Windows.Forms.Button();
             this.lkRegistrarme = new System.Windows.Forms.LinkLabel();
+            this.pMostrarContrasena = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pMostrarContrasena)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Clase05.Properties.Resources._1179839;
-            this.pictureBox1.Location = new System.Drawing.Point(18, 18);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(152, 187);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -69,7 +60,7 @@ namespace Clase05
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(181, 85);
+            this.label2.Location = new System.Drawing.Point(181, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 20);
             this.label2.TabIndex = 3;
@@ -77,15 +68,15 @@ namespace Clase05
             // 
             // txtContrasena
             // 
-            this.txtContrasena.Location = new System.Drawing.Point(181, 108);
+            this.txtContrasena.Location = new System.Drawing.Point(181, 96);
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.PasswordChar = '*';
-            this.txtContrasena.Size = new System.Drawing.Size(165, 27);
+            this.txtContrasena.Size = new System.Drawing.Size(149, 27);
             this.txtContrasena.TabIndex = 4;
             // 
             // btnIniciarSesion
             // 
-            this.btnIniciarSesion.Location = new System.Drawing.Point(181, 173);
+            this.btnIniciarSesion.Location = new System.Drawing.Point(181, 139);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
             this.btnIniciarSesion.Size = new System.Drawing.Size(188, 32);
             this.btnIniciarSesion.TabIndex = 5;
@@ -96,7 +87,7 @@ namespace Clase05
             // lkRegistrarme
             // 
             this.lkRegistrarme.AutoSize = true;
-            this.lkRegistrarme.Location = new System.Drawing.Point(181, 224);
+            this.lkRegistrarme.Location = new System.Drawing.Point(181, 185);
             this.lkRegistrarme.Name = "lkRegistrarme";
             this.lkRegistrarme.Size = new System.Drawing.Size(98, 20);
             this.lkRegistrarme.TabIndex = 6;
@@ -104,11 +95,35 @@ namespace Clase05
             this.lkRegistrarme.Text = "Registrarme";
             this.lkRegistrarme.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lkRegistrarme_LinkClicked);
             // 
+            // pMostrarContrasena
+            // 
+            this.pMostrarContrasena.Image = global::Clase05.Properties.Resources.eye_1;
+            this.pMostrarContrasena.Location = new System.Drawing.Point(336, 96);
+            this.pMostrarContrasena.Name = "pMostrarContrasena";
+            this.pMostrarContrasena.Size = new System.Drawing.Size(33, 27);
+            this.pMostrarContrasena.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pMostrarContrasena.TabIndex = 7;
+            this.pMostrarContrasena.TabStop = false;
+            this.pMostrarContrasena.MouseLeave += new System.EventHandler(this.pMostrarContrasena_MouseLeave);
+            this.pMostrarContrasena.MouseHover += new System.EventHandler(this.pMostrarContrasena_MouseHover);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Clase05.Properties.Resources._1179839;
+            this.pictureBox1.Location = new System.Drawing.Point(18, 18);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(152, 187);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // FLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 266);
+            this.ClientSize = new System.Drawing.Size(385, 218);
+            this.Controls.Add(this.pMostrarContrasena);
             this.Controls.Add(this.lkRegistrarme);
             this.Controls.Add(this.btnIniciarSesion);
             this.Controls.Add(this.txtContrasena);
@@ -124,6 +139,7 @@ namespace Clase05
             this.Name = "FLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FLogin";
+            ((System.ComponentModel.ISupportInitialize)(this.pMostrarContrasena)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -139,5 +155,6 @@ namespace Clase05
         private System.Windows.Forms.TextBox txtContrasena;
         private System.Windows.Forms.Button btnIniciarSesion;
         private System.Windows.Forms.LinkLabel lkRegistrarme;
+        private System.Windows.Forms.PictureBox pMostrarContrasena;
     }
 }

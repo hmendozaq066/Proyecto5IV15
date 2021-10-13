@@ -54,5 +54,15 @@ namespace Clase05
             //formulario que lo llamo hasta que sea cerrado
             fRegistro.ShowDialog();
         }
+
+        private void pMostrarContrasena_MouseHover(object sender, EventArgs e)
+        {
+            txtContrasena.PasswordChar = '\0';
+        }
+
+        private void pMostrarContrasena_MouseLeave(object sender, EventArgs e)
+        {
+            txtContrasena.PasswordChar = '*';
+        }
     }
 }

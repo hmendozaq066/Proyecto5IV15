@@ -70,6 +70,9 @@
     <EmbeddedResource Include="FLogin.resx">
       <DependentUpon>FLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FPrincipal.resx">
+      <DependentUpon>FPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRegistro.resx">
       <DependentUpon>FRegistro.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,6 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\1179839.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eye-1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

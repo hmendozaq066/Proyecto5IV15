@@ -71,6 +71,12 @@ namespace Clase05.Clase
                 persona.IDUsuario = Convert.ToInt32(elementos[0]);
                 persona.NombreUsuario = elementos[1];
                 persona.Contrasena = elementos[2];
+                persona.CorreoElectronico = elementos[3];
+                persona.FechaNacimiento = Convert.ToDateTime(elementos[4]);
+                persona.Genero = elementos[5];
+                persona.Semestre = Convert.ToInt32(elementos[6]);
+                persona.NumeroTelefono = elementos[7];
+                persona.CURP = elementos[8];
                 usuarios.Add(persona);
             }
             //Cerrarmos el archivo

@@ -90,6 +90,7 @@ namespace Clase05
                     if (usuario.Guardar())
                     {
                         MessageBox.Show("Usuario guardado", "CLASE05");
+                        Close();//Cierra la ventana actual, en caso de ser la unida cierra el programa
                     }
                 }
                 else
