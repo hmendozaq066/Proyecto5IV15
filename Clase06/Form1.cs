@@ -75,5 +75,72 @@ namespace Clase06
 
             dgvMostrarDatos.DataSource = tabla;
         }
+
+        private void btnInsertar_Click(object sender, EventArgs e)
+        {
+            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=prueba01;Trusted_Connection=True;";
+            var sqlCnn = new SqlConnection(cadenaConexion);//Nos pide como parámetro el la cadena de conexion
+            sqlCnn.Open(); //Se abre la conexión
+            //var query = "INSERT INTO usuarios(usuario_id, nombre, apellidos, correo, genero) VALUES(@usuario_id, @nombre, @apellidos, @correo, @genero)";
+            //ESTO ES LO PEOR QUE PUEDEN HACER EN UN PROYECTO
+            //DEBEN EVITAR CONCATENAR CADENAS EN UNA CONSULTA SQL
+            var query = string.Format("INSERT INTO usuarios(usuario_id, nombre, apellidos, correo, genero) VALUES({0}, '{1}', '{2}', '{3}', '{4}')",
+                txtID.Text, txtNombre.Text, txtApellidos.Text, txtCorreo.Text, txtGenero.Text);
+            txtConsulta.Text = query;
+            var sqlCmd = new SqlCommand(query, sqlCnn);
+            var resultado = sqlCmd.ExecuteNonQuery();
+            txtConsulta.Text += " El numero de filas afectadas es: " + resultado.ToString();
+
+        }
+
+        private void btnValidarUsuario_Click(object sender, EventArgs e)
+        {
+            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=prueba01;Trusted_Connection=True;";
+            var sqlCnn = new SqlConnection(cadenaConexion);//Nos pide como parámetro el la cadena de conexion
+            sqlCnn.Open(); //Se abre la conexión
+            //El SQLDataAdapter es para mandar la consulta al servidor
+            var query = string.Format("SELECT * FROM usuarios WHERE correo = '{0}' AND usuario_id = '{1}';", txtCorreo.Text, txtID.Text);
+            var adapter = new SqlDataAdapter(query, sqlCnn);
+            var tabla = new DataTable();//DataTable es un objeto que nos permite guardar información de forma temporal
+            adapter.Fill(tabla);//Fill es un método de dataAdapter para llenar una tabla
+            txtConsulta.Text = query;
+
+            if (tabla.Rows.Count > 0)
+            {
+                MessageBox.Show("Usuario valido");
+            }
+            else
+            {
+                MessageBox.Show("Usuario no valido");
+            }
+        }
+
+        private void btnInsertarParametrizado_Click(object sender, EventArgs e)
+        {
+            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=prueba01;Trusted_Connection=True;";
+            var sqlCnn = new SqlConnection(cadenaConexion);//Nos pide como parámetro el la cadena de conexion
+            sqlCnn.Open(); //Se abre la conexión
+            
+            var query = "INSERT INTO usuarios(usuario_id, nombre, apellidos, correo, genero) VALUES(@usuario_id, @nombre, @apellidos, @correo, @genero)";
+            var sqlCmd = new SqlCommand(query, sqlCnn);
+
+            sqlCmd.Parameters.AddWithValue("@usuario_id", txtID.Text);
+            sqlCmd.Parameters.AddWithValue("@nombre", txtNombre.Text);
+            sqlCmd.Parameters.AddWithValue("@apellidos", txtApellidos.Text);
+            sqlCmd.Parameters.AddWithValue("@correo", txtCorreo.Text);
+            sqlCmd.Parameters.AddWithValue("@genero", txtGenero.Text);
+
+            var resultado = sqlCmd.ExecuteNonQuery();
+            
+            if(resultado > 0)
+            {
+                MessageBox.Show("Registro guardado");
+            }
+            else
+            {
+                MessageBox.Show("No se pudo guardar el registro");
+            }
+
+        }
     }
 }
