@@ -48,6 +48,7 @@ namespace Clase06
             this.txtConsulta = new System.Windows.Forms.TextBox();
             this.btnValidarUsuario = new System.Windows.Forms.Button();
             this.btnInsertarParametrizado = new System.Windows.Forms.Button();
+            this.btnValidarUsuarioCorrecto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMostrarDatos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -203,7 +204,7 @@ namespace Clase06
             // 
             this.btnValidarUsuario.Location = new System.Drawing.Point(506, 406);
             this.btnValidarUsuario.Name = "btnValidarUsuario";
-            this.btnValidarUsuario.Size = new System.Drawing.Size(145, 23);
+            this.btnValidarUsuario.Size = new System.Drawing.Size(170, 23);
             this.btnValidarUsuario.TabIndex = 17;
             this.btnValidarUsuario.Text = "Validar usuario (concat)";
             this.btnValidarUsuario.UseVisualStyleBackColor = true;
@@ -219,11 +220,22 @@ namespace Clase06
             this.btnInsertarParametrizado.UseVisualStyleBackColor = true;
             this.btnInsertarParametrizado.Click += new System.EventHandler(this.btnInsertarParametrizado_Click);
             // 
+            // btnValidarUsuarioCorrecto
+            // 
+            this.btnValidarUsuarioCorrecto.Location = new System.Drawing.Point(506, 431);
+            this.btnValidarUsuarioCorrecto.Name = "btnValidarUsuarioCorrecto";
+            this.btnValidarUsuarioCorrecto.Size = new System.Drawing.Size(170, 23);
+            this.btnValidarUsuarioCorrecto.TabIndex = 19;
+            this.btnValidarUsuarioCorrecto.Text = "Validar Usuario (parámetros)";
+            this.btnValidarUsuarioCorrecto.UseVisualStyleBackColor = true;
+            this.btnValidarUsuarioCorrecto.Click += new System.EventHandler(this.btnValidarUsuarioCorrecto_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1066, 679);
+            this.Controls.Add(this.btnValidarUsuarioCorrecto);
             this.Controls.Add(this.btnInsertarParametrizado);
             this.Controls.Add(this.btnValidarUsuario);
             this.Controls.Add(this.txtConsulta);
@@ -245,6 +257,7 @@ namespace Clase06
             this.Controls.Add(this.btnConectar);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMostrarDatos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -272,6 +285,7 @@ namespace Clase06
         private System.Windows.Forms.TextBox txtConsulta;
         private System.Windows.Forms.Button btnValidarUsuario;
         private System.Windows.Forms.Button btnInsertarParametrizado;
+        private System.Windows.Forms.Button btnValidarUsuarioCorrecto;
     }
 }
 

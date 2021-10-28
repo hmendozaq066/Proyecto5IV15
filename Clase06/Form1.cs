@@ -142,5 +142,36 @@ namespace Clase06
             }
 
         }
+
+        private void btnValidarUsuarioCorrecto_Click(object sender, EventArgs e)
+        {
+            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=prueba01;Trusted_Connection=True;";
+            var sqlCnn = new SqlConnection(cadenaConexion);//Nos pide como parámetro el la cadena de conexion
+            sqlCnn.Open(); //Se abre la conexión
+            //El SQLDataAdapter es para mandar la consulta al servidor
+            var query = "SELECT * FROM usuarios WHERE usuario_id = @usuario_id AND correo = @correo;";
+            var adapter = new SqlDataAdapter(query, sqlCnn);
+            //Así se agregan los parámetros a un adapter para una consulta segura
+            adapter.SelectCommand.Parameters.AddWithValue("@correo", txtCorreo.Text);
+            adapter.SelectCommand.Parameters.AddWithValue("@usuario_id", txtID.Text);
+
+            var tabla = new DataTable();//DataTable es un objeto que nos permite guardar información de forma temporal
+            adapter.Fill(tabla);//Fill es un método de dataAdapter para llenar una tabla
+            txtConsulta.Text = query;
+
+            if (tabla.Rows.Count > 0)
+            {
+                MessageBox.Show("Usuario valido");
+            }
+            else
+            {
+                MessageBox.Show("Usuario no valido");
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
