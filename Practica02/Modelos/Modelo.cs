@@ -11,9 +11,11 @@ namespace Practica02.Modelos
     //Aquí estamos indicando que hay una herencia, la clase base es CDAO y la clase hija es Modelo
     class Modelo : CDAO
     {
+        //Declarando las propiedades
         public bool NuevoRegistro { get; set; }
-        public string Tabla { get; set; }
-        public string PK { get; set; }
+        //Protected es privado pero puede ser heredado
+        protected string Tabla { get; set; }
+        protected string PK { get; set; }
 
         /// <summary>
         /// Este método es de la clase Modelo, y obtiene todos los registros de la tabla indicada
@@ -21,9 +23,8 @@ namespace Practica02.Modelos
         /// <returns>Un DataTable con los registros obtenidos</returns>
         public DataTable ObtenerRegistros()
         {
-            var adapter = new SqlDataAdapter();
             var query = String.Format("SELECT * FROM {0};", Tabla);
-            adapter.SelectCommand.CommandText = query;
+            var adapter = new SqlDataAdapter(query, new SqlConnection());
             return Consultar(adapter);
         }
 
@@ -35,7 +36,7 @@ namespace Practica02.Modelos
         public DataRow ObtenerRegistroPorID(int ID)
         {
             var query = string.Format("SELECT * FROM {0} WHERE {1} = @PK", Tabla, PK);
-            var adapter = new SqlDataAdapter(null, query);
+            var adapter = new SqlDataAdapter(query, new SqlConnection());
             adapter.SelectCommand.Parameters.AddWithValue("@PK", ID);
             var resultado = Consultar(adapter);
             

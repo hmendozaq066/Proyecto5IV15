@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Practica02.Modelos;
 
 namespace Practica02
 {
@@ -15,6 +16,14 @@ namespace Practica02
         public Principal()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //var usuario = new Usuario();
+            var usuario = new Actividad();
+            //usuario.Tabla = "actividad";
+            dataGridView1.DataSource = usuario.ObtenerRegistros();
         }
     }
 }

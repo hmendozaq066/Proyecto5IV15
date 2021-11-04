@@ -25,11 +25,11 @@ namespace Clase06
             //2. Para la conexión se necesita la "cadena de conexion"  https://www.connectionstrings.com/ >> SQL Server >> Trusted Connection
             //Server=myServerAddress;Database=myDataBase;Trusted_Connection=True;
             //Server=Nombre del servidor (DESKTOP-0HLSANU)
-            //Database=Nombre de la base de datos (prueba01)
-            //Quedando de la siguiente forma: Server=DESKTOP-0HLSANU;Database=prueba01;Trusted_Connection=True;
+            //Database=Nombre de la base de datos (Practica002)
+            //Quedando de la siguiente forma: Server=DESKTOP-0HLSANU;Database=Practica002;Trusted_Connection=True;
             //3.- Realizar la conexión con el objero SQLConnection
 
-            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=prueba01;Trusted_Connection=True;";
+            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=Practica002;Trusted_Connection=True;";
             var sqlCnn = new SqlConnection(cadenaConexion);//Nos pide como parámetro el la cadena de conexion
             sqlCnn.Open(); //Se abre la conexión
             MessageBox.Show("Conexión abierta");
@@ -44,7 +44,7 @@ namespace Clase06
 
         private void btnTraerDatos_Click(object sender, EventArgs e)
         {
-            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=prueba01;Trusted_Connection=True;";
+            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=Practica002;Trusted_Connection=True;";
             var sqlCnn = new SqlConnection(cadenaConexion);//Nos pide como parámetro el la cadena de conexion
             sqlCnn.Open(); //Se abre la conexión
             //El SQLDataAdapter es para mandar la consulta al servidor
@@ -64,7 +64,7 @@ namespace Clase06
 
         private void btnTraerDatosFiltro_Click(object sender, EventArgs e)
         {
-            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=prueba01;Trusted_Connection=True;";
+            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=Practica002;Trusted_Connection=True;";
             var sqlCnn = new SqlConnection(cadenaConexion);//Nos pide como parámetro el la cadena de conexion
             sqlCnn.Open(); //Se abre la conexión
             //El SQLDataAdapter es para mandar la consulta al servidor
@@ -78,7 +78,7 @@ namespace Clase06
 
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=prueba01;Trusted_Connection=True;";
+            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=Practica002;Trusted_Connection=True;";
             var sqlCnn = new SqlConnection(cadenaConexion);//Nos pide como parámetro el la cadena de conexion
             sqlCnn.Open(); //Se abre la conexión
             //var query = "INSERT INTO usuarios(usuario_id, nombre, apellidos, correo, genero) VALUES(@usuario_id, @nombre, @apellidos, @correo, @genero)";
@@ -95,7 +95,7 @@ namespace Clase06
 
         private void btnValidarUsuario_Click(object sender, EventArgs e)
         {
-            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=prueba01;Trusted_Connection=True;";
+            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=Practica002;Trusted_Connection=True;";
             var sqlCnn = new SqlConnection(cadenaConexion);//Nos pide como parámetro el la cadena de conexion
             sqlCnn.Open(); //Se abre la conexión
             //El SQLDataAdapter es para mandar la consulta al servidor
@@ -117,7 +117,7 @@ namespace Clase06
 
         private void btnInsertarParametrizado_Click(object sender, EventArgs e)
         {
-            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=prueba01;Trusted_Connection=True;";
+            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=Practica002;Trusted_Connection=True;";
             var sqlCnn = new SqlConnection(cadenaConexion);//Nos pide como parámetro el la cadena de conexion
             sqlCnn.Open(); //Se abre la conexión
             
@@ -145,7 +145,7 @@ namespace Clase06
 
         private void btnValidarUsuarioCorrecto_Click(object sender, EventArgs e)
         {
-            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=prueba01;Trusted_Connection=True;";
+            var cadenaConexion = "Server=DESKTOP-0HLSANU;Database=Practica002;Trusted_Connection=True;";
             var sqlCnn = new SqlConnection(cadenaConexion);//Nos pide como parámetro el la cadena de conexion
             sqlCnn.Open(); //Se abre la conexión
             //El SQLDataAdapter es para mandar la consulta al servidor

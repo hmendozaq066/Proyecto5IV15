@@ -11,7 +11,7 @@ namespace Practica02.Modelos
     class CDAO
     {
         private SqlConnection conexion = null;
-        private string cadena = @"Data Source=DESKTOP-0HLSANU;Initial Catalog=Practica02;Integrated Security=True";
+        private string cadena = @"Data Source=DESKTOP-0HLSANU;Initial Catalog=Practica002;Integrated Security=True";
 
         /// <summary>
         /// Este método ejecuta un sqlcommand, se usa para el INSERT, UPDATE, DELETE
