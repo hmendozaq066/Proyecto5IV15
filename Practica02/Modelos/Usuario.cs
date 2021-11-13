@@ -28,6 +28,15 @@ namespace Practica02.Modelos
             PK = "usuario_id";
             NuevoRegistro = true;
         }
+
+        public DataTable Buscar(string criterio, string campo)
+        {
+            string query = string.Format("SELECT * FROM usuario WHERE {0} LIKE @criterio;", campo);
+            var adapter = new SqlDataAdapter(query, new SqlConnection());
+            adapter.SelectCommand.Parameters.AddWithValue("@criterio", "%" + criterio + "%");
+            return Consultar(adapter);
+        }
+
         //Este método es único para la clase usuario ya que valida
         public bool ValidarUsuario()
         {
@@ -101,12 +110,13 @@ namespace Practica02.Modelos
 
         public bool Actualizar()
         {
-            string query = "UPDATE usuario SET correo = @correo, contrasenha = @contrasenha, rol = @rol, estado = @estado WHERE usuario_id = @usuario_id;";
+            string query = "UPDATE usuario SET correo = @correo, contrasenha = @contrasenha, rol = @rol, estado = @estado, intentos_fallidos = @intentos_fallidos WHERE usuario_id = @usuario_id;";
             var comando = new SqlCommand(query, new SqlConnection());
             comando.Parameters.AddWithValue("@correo", Correo);
             comando.Parameters.AddWithValue("@contrasenha", Contrasenha);
             comando.Parameters.AddWithValue("@rol", Rol);
             comando.Parameters.AddWithValue("@estado", Estado);
+            comando.Parameters.AddWithValue("@intentos_fallidos", IntentosFallidos);
             comando.Parameters.AddWithValue("@usuario_id", UsuarioID);
 
             int resultado = Ejecutar(comando);
