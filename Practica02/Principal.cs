@@ -259,5 +259,21 @@ namespace Practica02
             }            
 
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            var actividad = new Actividad();
+            actividad.ActividadN = "Actividad desde C# con SP";
+            actividad.Horas = 3;
+
+            if (actividad.GuardarSP())
+            {
+                MessageBox.Show("Actividad guardada");
+            }
+            else
+            {
+                MessageBox.Show("No se pudo guardar");
+            }
+        }
     }
 }

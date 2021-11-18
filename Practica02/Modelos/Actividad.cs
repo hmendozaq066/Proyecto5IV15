@@ -39,5 +39,19 @@ namespace Practica02.Modelos
             //Si es mayor a cero devuelve true de lo contrario false
             return (resultado > 0) ? true : false;
         }
+
+        public bool GuardarSP()
+        {
+            var comando = new SqlCommand();            
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.CommandText = "sp_agregar_actividad";
+            comando.Parameters.AddWithValue("@actividad", ActividadN);
+            comando.Parameters.AddWithValue("@horas", Horas);
+
+            int resultado = Ejecutar(comando);
+
+            return (resultado > 0) ? true : false;
+        }
+
     }
 }
